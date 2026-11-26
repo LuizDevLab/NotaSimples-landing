@@ -1,0 +1,180 @@
+# NotaSimples — textos da landing (v1, rascunho para revisão)
+# Edite só o que está entre aspas. Linhas com "#" são comentários e não aparecem na página.
+# "# CONFERIR" marca trechos que precisam da sua confirmação técnica.
+
+seo:
+  titulo: "Emitir NFS-e Nacional fácil para Simples e MEI | NotaSimples"
+  descricao: "Emita sua NFS-e pelo padrão nacional em 1 minuto, com ajuda campo a campo em código de serviço, ISS e retenções. Para Simples Nacional e MEI. Entre na lista de espera."
+
+cta:
+  botao: "Entrar na lista de espera"
+  vantagem: "Quem entra na lista testa primeiro e garante uma condição especial de lançamento."
+
+hero:
+  selo: "Novo padrão nacional da NFS-e"
+  titulo: "Sua NFS-e emitida em 1 minuto"
+  subtitulo: "Sem precisar entender o Portal Nacional. O NotaSimples te guia campo a campo, do código de serviço ao ISS. Feito para quem é do Simples Nacional ou MEI e presta serviço."
+  apoio: "Gratuito para entrar na lista. Sem compromisso."
+
+  # Dados fictícios do mockup da tela "Nova NFS-e"
+  mockup:
+    titulo_tela: "Nova NFS-e"
+    campos:
+      - pergunta: "Para quem é a nota?"
+        valor: "Padaria Pão Quente Ltda"
+        detalhe: "CNPJ 12.345.678/0001-90"
+      - pergunta: "Qual serviço você prestou?"
+        valor: "Suporte técnico em informática"
+        detalhe: "Código 01.07.01" # CONFERIR código na lista nacional
+      - pergunta: "Quanto você cobrou?"
+        valor: "R$ 850,00"
+    dica: "No Simples, o ISS já vai no seu DAS. Só marque retenção se o seu cliente for reter."
+    botao: "Emitir nota"
+    sucesso: "Nota emitida"
+
+dor:
+  titulo: "O Portal Nacional não foi feito para você. O NotaSimples foi."
+  subtitulo: "Desde novembro de 2026, quem é do Simples precisa emitir a nota no padrão nacional. E o portal do governo fala a língua do fisco, não a sua."
+  portal:
+    rotulo: "No Portal Nacional"
+    itens:
+      - "Campos com nomes técnicos e siglas"
+      - "Você precisa achar sozinho o código do serviço"
+      - "Dúvida sobre ISS e retenção? Boa sorte"
+      - "Tudo do zero, toda vez"
+  notasimples:
+    rotulo: "No NotaSimples"
+    itens:
+      - "Perguntas simples, em português de gente"
+      - "Sugestão do código certo pelo que você descreve"
+      - "Ajuda em cada campo, na hora em que você precisa"
+      - "Modelos prontos para repetir a nota em segundos"
+
+como_funciona:
+  titulo: "Como funciona"
+  passos:
+    - titulo: "Conte o que você fez"
+      texto: "Para quem foi, qual serviço e quanto custou. Só isso."
+    - titulo: "A gente confere com você"
+      texto: "O NotaSimples sugere o código de serviço e explica ISS e retenções antes de emitir."
+    - titulo: "Nota emitida e enviada"
+      texto: "Sua NFS-e sai no padrão nacional e vai direto para o e-mail do seu cliente."
+
+funcionalidades:
+  titulo: "Tudo o que você precisa para emitir sem medo"
+  itens:
+    - titulo: "Emissão guiada"
+      texto: "Ajuda campo a campo em código de serviço, ISS e retenções. Você entende o que está fazendo."
+    - titulo: "Modelos de nota"
+      texto: "Emite todo mês para o mesmo cliente? Salve um modelo e repita em segundos."
+    - titulo: "Envio ao cliente"
+      texto: "PDF e XML vão para o e-mail do seu cliente assim que a nota é emitida."
+    - titulo: "Dashboard de faturamento"
+      texto: "Quanto você faturou no mês, no ano e com cada cliente, em uma tela."
+    - titulo: "Relatórios"
+      texto: "Notas do período prontas para mandar ao seu contador, sem planilha."
+    - titulo: "Assistente com IA"
+      texto: "Pergunte em português e receba a resposta sobre a sua nota."
+      em_breve: true
+
+suporte:
+  titulo: "Travou? Fale com uma pessoa de verdade"
+  texto: "Nada de robô empurrando artigo. Você chama no WhatsApp e quem responde entende de nota fiscal."
+  horario: "Segunda a sexta, das 9h às 18h."
+  botao: "Chamar no WhatsApp"
+
+prova_social:
+  # Seção escondida até haver depoimentos reais do beta.
+  ativo: false
+  titulo: "Quem já emite com o NotaSimples"
+  depoimentos: []
+
+planos:
+  titulo: "Planos"
+  aviso: "Preços no lançamento"
+  texto: "Estamos fechando os valores. Quem está na lista fica sabendo primeiro e garante uma condição especial."
+  incluido_titulo: "O que vem no NotaSimples"
+  incluido:
+    - "Emissão de NFS-e no padrão nacional"
+    - "Ajuda campo a campo em código de serviço, ISS e retenções"
+    - "Modelos de nota e envio automático ao cliente"
+    - "Dashboard de faturamento e relatórios"
+    - "Suporte humano pelo WhatsApp"
+
+faq:
+  titulo: "Perguntas frequentes sobre a NFS-e Nacional"
+  perguntas:
+    - pergunta: "Sou do Simples Nacional. Sou obrigado a emitir a NFS-e no padrão nacional?"
+      resposta: "Sim, se você presta serviço. Desde 1º de novembro de 2026, microempresas (ME) e empresas de pequeno porte (EPP) do Simples Nacional precisam emitir a NFS-e no padrão nacional. A regra está na Resolução CGSN nº 191/2026."
+      # fonte: https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/simples-nacional-nfs-e-nacional-sera-obrigatoria-para-me-e-epp-a-partir-de-1o-de-novembro-de-2026
+
+    - pergunta: "E o MEI, também precisa?"
+      resposta: "Precisa. O MEI que presta serviço emite a NFS-e no padrão nacional desde 1º de setembro de 2023, pela Resolução CGSN nº 169/2022. Quando o cliente é pessoa física, a emissão é opcional."
+      # fonte: https://www.gov.br/nfse/pt-br/biblioteca/legislacao-aplicavel-ao-mei
+      # CONFERIR: regra da emissão opcional para pessoa física
+
+    - pergunta: "Posso continuar emitindo no site da minha prefeitura?"
+      resposta: "Se você é ME ou EPP do Simples, não. Desde novembro de 2026 a nota precisa sair no padrão nacional, pelo Emissor Nacional do governo ou por um sistema conectado a ele, como o NotaSimples. A nota do padrão nacional vale em todo o Brasil."
+      # fonte: https://crcms.org.br/simples-nacional-nfs-e-nacional-obrigatoria-para-me-e-epp-a-partir-de-1o-de-novembro-de-2026/
+      # CONFERIR: casos de municípios com sistema próprio integrado ao ambiente nacional
+
+    - pergunta: "O que é o Portal Nacional da NFS-e?"
+      resposta: "É o site do governo federal para emitir a nota fiscal de serviço no padrão nacional, em gov.br/nfse. Ele é gratuito, mas foi pensado para quem já entende de tributação: você precisa saber sozinho o código do serviço, as regras do ISS e quando há retenção."
+      # fonte: https://www.gov.br/nfse/pt-br/pagina-inicial/
+
+    - pergunta: "Se o emissor do governo é gratuito, por que usar o NotaSimples?"
+      resposta: "Pelo tempo e pela tranquilidade. No portal, você preenche tudo do zero e responde sozinho por cada campo. No NotaSimples, você responde perguntas simples, recebe ajuda em cada etapa, salva modelos, manda a nota ao cliente na hora e acompanha seu faturamento. E, se travar, fala com uma pessoa."
+
+    - pergunta: "Preciso preencher IBS e CBS na nota em 2026?"
+      resposta: "Não. Em 2026, quem é do Simples Nacional ou MEI não precisa aplicar as regras de IBS e CBS na NFS-e. A partir de 1º de janeiro de 2027, essas informações passam a ser exigidas nos casos previstos na regulamentação. O NotaSimples vai acompanhar essa mudança por você."
+      # fonte: https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/simples-nacional-nfs-e-nacional-sera-obrigatoria-para-me-e-epp-a-partir-de-1o-de-novembro-de-2026
+      # fonte: LC 214/2025, art. 348 (citado por https://actana.com.br/reforma-tributaria-nfse-simples-nacional)
+
+    - pergunta: "O NotaSimples substitui o meu contador?"
+      resposta: "Não. Ele resolve a emissão da nota no dia a dia, e os relatórios deixam tudo pronto para o seu contador. Vocês dois saem ganhando."
+
+    - pergunta: "Quando o NotaSimples fica pronto?"
+      resposta: "Estamos nos últimos ajustes. Entre na lista de espera: você testa antes de todo mundo e garante uma condição especial de lançamento."
+
+    - pergunta: "O que vocês fazem com os meus dados da lista de espera?"
+      resposta: "Usamos só para avisar sobre o lançamento do NotaSimples. Não vendemos nem repassamos seus dados. Você pode pedir para sair da lista quando quiser."
+
+formulario:
+  titulo: "Entre na lista de espera"
+  texto: "Avisamos você primeiro quando abrir."
+  campos:
+    nome:
+      rotulo: "Como podemos te chamar?"
+      placeholder: "Seu nome"
+    email:
+      rotulo: "Qual o seu melhor e-mail?"
+      placeholder: "voce@email.com"
+    whatsapp:
+      rotulo: "Qual o seu WhatsApp?"
+      opcional: "(opcional)"
+      placeholder: "(11) 91234-5678"
+    consentimento: "Aceito receber avisos sobre o NotaSimples e li a [Política de Privacidade](/privacidade)."
+  botao: "Entrar na lista de espera"
+  enviando: "Enviando..."
+  sucesso:
+    titulo: "Pronto! Você está na lista."
+    texto: "Avisamos no seu e-mail e no WhatsApp quando abrir."
+  erros:
+    nome: "Diga como podemos te chamar."
+    email: "Confira o seu e-mail. Parece que falta alguma coisa."
+    whatsapp: "Confira o número com DDD."
+    consentimento: "Para entrar na lista, marque que aceita receber os avisos."
+    geral: "Não conseguimos enviar agora. Tente de novo em alguns segundos."
+
+cta_final:
+  titulo: "Chega de brigar com o Portal Nacional"
+  texto: "Entre na lista e seja um dos primeiros a emitir sua NFS-e em 1 minuto."
+
+rodape:
+  contador:
+    titulo: "É contador? Fale com a gente"
+    texto: "Quer indicar o NotaSimples para os seus clientes? Vamos conversar."
+    whatsapp_mensagem: "Olá! Sou contador e quero saber mais sobre o NotaSimples."
+  email: "contato@notasimples.com.br"
+  privacidade: "Política de Privacidade"
+  direitos: "© {ano} NotaSimples"
