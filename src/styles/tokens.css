@@ -1,0 +1,60 @@
+/* NotaSimples — tokens de design. Fonte: BRAND.md (v1). */
+:root {
+  /* Cores */
+  --coral: #ff6b4a;            /* ícone, destaques, ilustrações, borda de foco — nunca com texto branco */
+  --coral-queimado: #c2410c;   /* botões e links (texto branco) */
+  --coral-escuro: #9a3412;     /* hover de links e botões */
+  --creme: #fff8f0;            /* fundo */
+  --creme-areia: #f8ead8;      /* cards e faixas de seção */
+  --bege: #eadbcb;             /* bordas sutis */
+  --grafite: #2b211c;          /* texto */
+  --marrom: #6b5a50;           /* texto secundário */
+  --verde: #15803d;            /* sucesso — só "nota emitida" */
+  --verde-fundo: #dcfce7;      /* fundo do selo de sucesso */
+  --pessego: #fff1e8;          /* fundo de dica/ajuda */
+  --branco: #ffffff;
+
+  /* Fontes */
+  --fonte-titulo: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
+  --fonte-texto: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Tamanhos de texto (fluidos, 360px → 1280px) */
+  --texto-sm: 0.875rem;
+  --texto-base: 1rem;
+  --texto-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --titulo-3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --titulo-2: clamp(1.75rem, 1.35rem + 1.8vw, 2.75rem);
+  --titulo-1: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+
+  /* Cantos */
+  --raio-campo: 12px;          /* campos e botões */
+  --raio-card: 24px;           /* cards (BRAND: 20–28px) */
+  --raio-card-grande: 28px;
+
+  /* Sombras quentes (base grafite, baixa opacidade) */
+  --sombra-sm: 0 1px 2px rgb(43 33 28 / 0.06), 0 1px 3px rgb(43 33 28 / 0.08);
+  --sombra-md: 0 4px 12px rgb(43 33 28 / 0.08), 0 2px 4px rgb(43 33 28 / 0.05);
+  --sombra-lg: 0 18px 40px rgb(43 33 28 / 0.12), 0 6px 12px rgb(43 33 28 / 0.06);
+
+  /* Espaçamentos */
+  --esp-1: 0.25rem;
+  --esp-2: 0.5rem;
+  --esp-3: 0.75rem;
+  --esp-4: 1rem;
+  --esp-6: 1.5rem;
+  --esp-8: 2rem;
+  --esp-12: 3rem;
+  --esp-16: 4rem;
+  --esp-secao: clamp(4rem, 3rem + 5vw, 7.5rem);
+
+  /* Layout */
+  --largura-conteudo: 72rem;
+  --largura-texto: 40rem;
+  --gutter: 1rem;              /* margem lateral mínima no celular */
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --gutter: 2rem;
+  }
+}

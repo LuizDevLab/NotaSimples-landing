@@ -1,0 +1,15 @@
+# dependências e build
+node_modules/
+dist/
+.astro/
+
+# segredos (Turnstile, Google Sheets)
+.env
+.env.*
+.dev.vars
+.wrangler/
+
+# sistema
+.DS_Store
+Thumbs.db
+npm-debug.log*
