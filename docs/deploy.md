@@ -65,6 +65,15 @@ banner (a política de privacidade já menciona o Web Analytics).
 Enquanto o site estiver no `*.pages.dev`, todas as páginas saem com `noindex`: o Google
 não indexa o endereço provisório. Isso é de propósito.
 
+## Se algo der errado
+
+| Mensagem no log do build | O que fazer |
+|---|---|
+| `npm ci can only install packages when your package.json and package-lock.json ... are in sync` com `Missing: @emnapi/...` | O lock foi gravado por um npm mais novo que o do Cloudflare (npm 10). Rode `npx npm@10.9.9 install`, faça commit do `package-lock.json` e o push. |
+
+> Sempre que adicionar ou atualizar um pacote, use `npx npm@10.9.9 install ...` em vez de
+> `npm install ...`. Assim o lock continua compatível com o build do Cloudflare.
+
 ---
 
 ## Depois: o domínio notasimples.com.br
