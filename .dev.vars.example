@@ -1,0 +1,15 @@
+# Copie para .dev.vars (que não vai para o Git) e preencha.
+# Usado só no computador, pelo "npm run dev:pages". Em produção, estas variáveis
+# ficam no painel do Cloudflare Pages (Settings > Variables and Secrets).
+
+# "local" ativa o modo de teste: sem as credenciais do Google, a linha aparece no terminal.
+AMBIENTE=local
+
+# Chave secreta de TESTE do Turnstile (sempre aprova).
+# Para simular recusa, use 2x0000000000000000000000000000000AA.
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+
+# Google Sheets (veja docs/lista-de-espera.md). Deixe vazio para usar o modo de teste.
+GOOGLE_SERVICE_ACCOUNT_EMAIL=
+GOOGLE_PRIVATE_KEY=
+GOOGLE_SHEET_ID=

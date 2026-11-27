@@ -1,15 +1,31 @@
 ---
-// Formulário da lista de espera: só HTML e CSS por enquanto.
-// O envio (JS, Pages Function, Turnstile e Sheets) entra na etapa 4. Os erros e o card de
-// sucesso já estão aqui, escondidos, para a etapa 4 só ligar e desligar.
+// Formulário da lista de espera. O comportamento está em src/scripts/formulario.ts e o
+// envio vai para a Pages Function em functions/api/lista.ts.
 import Icone from './Icone.astro';
 import { conteudo, comLinks } from '../lib/conteudo';
 
 const f = conteudo.formulario;
+
+// Chave pública do Turnstile, definida no build (PUBLIC_TURNSTILE_SITE_KEY).
+// Sem ela, usa a chave de teste oficial, que sempre passa e só serve para o computador.
+const CHAVE_TESTE = '1x00000000000000000000AA';
+const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || CHAVE_TESTE;
+if (sitekey === CHAVE_TESTE) {
+  console.warn('[formulário] PUBLIC_TURNSTILE_SITE_KEY ausente: usando a chave de teste do Turnstile.');
+}
 ---
 
 <div class="form-card">
-  <form class="formulario" action="/api/lista" method="post" data-formulario>
+  <form
+    class="formulario"
+    action="/api/lista"
+    method="post"
+    novalidate
+    data-formulario
+    data-sitekey={sitekey}
+    data-enviando={f.enviando}
+    data-erros={JSON.stringify(f.erros)}
+  >
     <div class="form-cabecalho">
       <h3>{f.titulo}</h3>
       <p>{f.texto}</p>
@@ -24,7 +40,6 @@ const f = conteudo.formulario;
         autocomplete="name"
         required
         placeholder={f.campos.nome.placeholder}
-        aria-describedby="erro-nome"
       />
       <p class="erro" id="erro-nome" hidden>{f.erros.nome}</p>
     </div>
@@ -39,7 +54,6 @@ const f = conteudo.formulario;
         autocomplete="email"
         required
         placeholder={f.campos.email.placeholder}
-        aria-describedby="erro-email"
       />
       <p class="erro" id="erro-email" hidden>{f.erros.email}</p>
     </div>
@@ -56,7 +70,6 @@ const f = conteudo.formulario;
         inputmode="tel"
         autocomplete="tel-national"
         placeholder={f.campos.whatsapp.placeholder}
-        aria-describedby="erro-whatsapp"
       />
       <p class="erro" id="erro-whatsapp" hidden>{f.erros.whatsapp}</p>
     </div>
@@ -67,15 +80,28 @@ const f = conteudo.formulario;
         name="consentimento"
         type="checkbox"
         required
-        aria-describedby="erro-consentimento"
       />
       <label for="lista-consentimento" set:html={comLinks(f.campos.consentimento)} />
       <p class="erro" id="erro-consentimento" hidden>{f.erros.consentimento}</p>
     </div>
 
-    <button type="submit" class="botao botao-largo">{f.botao}</button>
-    <p class="erro erro-geral" role="alert" hidden>{f.erros.geral}</p>
+    <!-- Campo-isca contra robôs: invisível e fora da navegação por teclado. -->
+    <div class="isca" aria-hidden="true">
+      <label for="lista-empresa">Empresa</label>
+      <input id="lista-empresa" name="empresa" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="enviar">
+      <!-- O Turnstile só aparece aqui se precisar de um clique. -->
+      <div class="turnstile" data-turnstile></div>
+      <button type="submit" class="botao botao-largo">{f.botao}</button>
+      <p class="erro erro-geral" role="alert" hidden>{f.erros.geral}</p>
+    </div>
   </form>
+
+  <script>
+    import '../scripts/formulario';
+  </script>
 
   <div class="sucesso" role="status" tabindex="-1" hidden data-sucesso>
     <span class="sucesso-icone"><Icone nome="check" tamanho={32} /></span>
@@ -148,6 +174,36 @@ const f = conteudo.formulario;
     gap: var(--esp-3);
     padding-block: var(--esp-8);
     text-align: center;
+  }
+
+  .formulario[hidden] {
+    display: none;
+  }
+
+  /* Turnstile, botão e erro geral juntos: o widget invisível não abre espaço extra. */
+  .enviar {
+    display: grid;
+  }
+
+  .erro-geral:not([hidden]) {
+    margin-top: var(--esp-3);
+  }
+
+  .isca {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .botao[disabled] {
+    cursor: progress;
+    opacity: 0.75;
+  }
+
+  .campo input[aria-invalid='true'] {
+    border-color: #b42318;
   }
 
   .sucesso[hidden] {
