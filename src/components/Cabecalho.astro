@@ -2,6 +2,12 @@
 import Logo from './Logo.astro';
 import BotaoCta from './BotaoCta.astro';
 import { conteudo } from '../lib/conteudo';
+
+interface Props {
+  home?: boolean;
+}
+
+const { home = true } = Astro.props;
 ---
 
 <header class="cabecalho">
@@ -9,7 +15,7 @@ import { conteudo } from '../lib/conteudo';
     <a href="/" class="cabecalho-logo" aria-label="NotaSimples, página inicial">
       <Logo />
     </a>
-    <BotaoCta texto={conteudo.cta.botao_curto} pequeno />
+    <BotaoCta texto={conteudo.cta.botao_curto} pequeno href={home ? '#lista' : '/#lista'} />
   </div>
 </header>
 

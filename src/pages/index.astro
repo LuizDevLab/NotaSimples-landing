@@ -12,9 +12,37 @@ import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import Rodape from '../components/Rodape.astro';
 import { conteudo } from '../lib/conteudo';
+import { SITE, IMAGEM_OG } from '../lib/site';
+
+// Dados estruturados (JSON-LD). O FAQ sai das mesmas perguntas da página.
+const dadosEstruturados = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'NotaSimples',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description: conteudo.seo.descricao,
+    url: SITE.href,
+    image: IMAGEM_OG.url,
+    inLanguage: 'pt-BR',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: conteudo.faq.perguntas.map((p) => ({
+      '@type': 'Question',
+      name: p.pergunta,
+      acceptedAnswer: { '@type': 'Answer', text: p.resposta },
+    })),
+  },
+];
+// "<" escapado para o JSON nunca fechar a tag <script> por acidente.
+const jsonLd = JSON.stringify(dadosEstruturados).replace(/</g, '\\u003c');
 ---
 
 <Base title={conteudo.seo.titulo} description={conteudo.seo.descricao}>
+  <script type="application/ld+json" slot="head" set:html={jsonLd} />
   <Cabecalho />
   <main>
     <Hero />

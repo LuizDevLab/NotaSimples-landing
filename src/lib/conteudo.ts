@@ -73,6 +73,7 @@ export interface Conteudo {
     erros: Record<'nome' | 'email' | 'whatsapp' | 'consentimento' | 'geral', string>;
   };
   cta_final: { titulo: string; texto: string };
+  pagina_404: { titulo: string; texto: string; botao: string };
   rodape: {
     contador: { titulo: string; texto: string; whatsapp_mensagem: string };
     email: string;

@@ -1,14 +1,15 @@
 ---
 titulo: "Política de Privacidade"
 atualizado_em: "2026-11-25"
-# CONFERIR: rascunho. Substituir [NOME COMPLETO]. Vale revisar com um advogado antes de publicar.
+descricao: "Como o NotaSimples trata os dados da lista de espera: o que coletamos, para quê, com quem compartilhamos e seus direitos pela LGPD."
+# CONFERIR: rascunho. Vale revisar com um advogado antes de publicar.
 ---
 
 Esta política explica quais dados o NotaSimples coleta na lista de espera e o que fazemos com eles.
 
 ## Quem é o responsável pelos seus dados
 
-O responsável (controlador) pelos dados é **[NOME COMPLETO]**, pessoa física, criador do NotaSimples. Fale com a gente pelo e-mail **contato@notasimples.com.br**.
+O responsável (controlador) pelos dados é **Luiz Henrique da Silva Ramos**, pessoa física, criador do NotaSimples. Fale com a gente pelo e-mail **contato@notasimples.com.br**.
 
 ## Quais dados coletamos
 

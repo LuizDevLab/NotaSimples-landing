@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import Cabecalho from '../components/Cabecalho.astro';
+import Rodape from '../components/Rodape.astro';
+import { Content, frontmatter } from '../content/privacidade.md';
+
+const atualizadoEm = new Date(`${frontmatter.atualizado_em}T12:00:00`).toLocaleDateString('pt-BR', {
+  dateStyle: 'long',
+  timeZone: 'America/Sao_Paulo',
+});
+---
+
+<Base title={`${frontmatter.titulo} | NotaSimples`} description={frontmatter.descricao}>
+  <Cabecalho home={false} />
+  <main class="container politica">
+    <header>
+      <h1>{frontmatter.titulo}</h1>
+      <p class="texto-secundario">
+        Atualizada em <time datetime={frontmatter.atualizado_em}>{atualizadoEm}</time>.
+      </p>
+    </header>
+    <div class="prosa">
+      <Content />
+    </div>
+  </main>
+  <Rodape />
+</Base>
+
+<style>
+  .politica {
+    max-width: var(--largura-texto);
+    padding-block: var(--esp-8) var(--esp-secao);
+  }
+
+  header {
+    display: grid;
+    gap: var(--esp-3);
+    margin-bottom: var(--esp-12);
+  }
+
+  h1 {
+    font-size: var(--titulo-2);
+  }
+
+  .prosa {
+    display: grid;
+    gap: var(--esp-4);
+    font-size: var(--texto-lg);
+  }
+
+  .prosa :global(h2) {
+    margin-top: var(--esp-8);
+    font-size: var(--titulo-3);
+    font-weight: 700;
+  }
+
+  .prosa :global(ul) {
+    display: grid;
+    gap: var(--esp-2);
+    padding-left: 1.25em;
+  }
+
+  .prosa :global(li::marker) {
+    color: var(--coral-queimado);
+  }
+</style>

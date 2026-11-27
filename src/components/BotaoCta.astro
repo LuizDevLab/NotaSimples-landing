@@ -7,12 +7,13 @@ interface Props {
   texto?: string;
   pequeno?: boolean;
   largo?: boolean;
+  href?: string;
 }
 
-const { texto = conteudo.cta.botao, pequeno = false, largo = false } = Astro.props;
+const { texto = conteudo.cta.botao, pequeno = false, largo = false, href = '#lista' } = Astro.props;
 ---
 
-<a class:list={['botao', { 'botao-pequeno': pequeno, 'botao-largo': largo }]} href="#lista">
+<a class:list={['botao', { 'botao-pequeno': pequeno, 'botao-largo': largo }]} href={href}>
   {texto}
   {!pequeno && <Icone nome="seta" tamanho={20} />}
 </a>

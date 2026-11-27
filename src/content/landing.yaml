@@ -154,7 +154,7 @@ formulario:
       rotulo: "Qual o seu WhatsApp?"
       opcional: "(opcional)"
       placeholder: "(11) 91234-5678"
-    consentimento: "Aceito receber avisos sobre o NotaSimples e li a [Política de Privacidade](/privacidade)."
+    consentimento: "Aceito receber avisos sobre o NotaSimples e li a [Política de Privacidade](/privacidade/)."
   botao: "Entrar na lista de espera"
   enviando: "Enviando..."
   sucesso:
@@ -170,6 +170,11 @@ formulario:
 cta_final:
   titulo: "Chega de brigar com o Portal Nacional"
   texto: "Entre na lista e seja um dos primeiros a emitir sua NFS-e em 1 minuto."
+
+pagina_404:
+  titulo: "Essa página não existe"
+  texto: "O endereço pode ter mudado ou sido digitado errado. Que tal voltar para o começo?"
+  botao: "Voltar para a página inicial"
 
 rodape:
   contador:

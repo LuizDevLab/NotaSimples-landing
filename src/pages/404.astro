@@ -1,0 +1,50 @@
+---
+// Com um 404.html no build, o Cloudflare Pages responde 404 de verdade em endereços
+// inexistentes, em vez de mostrar a home (que o Google trataria como página duplicada).
+import Base from '../layouts/Base.astro';
+import Cabecalho from '../components/Cabecalho.astro';
+import Rodape from '../components/Rodape.astro';
+import BotaoCta from '../components/BotaoCta.astro';
+import { conteudo } from '../lib/conteudo';
+
+const p = conteudo.pagina_404;
+---
+
+<Base title={`${p.titulo} | NotaSimples`} description={p.texto} noindex>
+  <Cabecalho home={false} />
+  <main class="container nao-encontrada">
+    <p class="codigo" aria-hidden="true">404</p>
+    <h1>{p.titulo}</h1>
+    <p class="texto-secundario">{p.texto}</p>
+    <BotaoCta texto={p.botao} href="/" />
+  </main>
+  <Rodape />
+</Base>
+
+<style>
+  .nao-encontrada {
+    display: grid;
+    justify-items: center;
+    gap: var(--esp-6);
+    max-width: var(--largura-texto);
+    padding-block: var(--esp-16) var(--esp-secao);
+    text-align: center;
+  }
+
+  .codigo {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(4rem, 3rem + 6vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--coral-queimado);
+  }
+
+  h1 {
+    font-size: var(--titulo-2);
+  }
+
+  .texto-secundario {
+    font-size: var(--texto-lg);
+  }
+</style>
