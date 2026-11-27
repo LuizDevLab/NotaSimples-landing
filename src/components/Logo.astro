@@ -1,0 +1,70 @@
+---
+// Logo do BRAND: folha coral com dobra e check creme + "nota" grafite e "simples" coral queimado.
+interface Props {
+  escuro?: boolean;
+  soIcone?: boolean;
+  class?: string;
+}
+
+const { escuro = false, soIcone = false, class: classe } = Astro.props;
+const folha = escuro ? '#FFF8F0' : '#FF6B4A';
+const dobra = escuro ? '#EADBCB' : '#C2410C';
+const check = escuro ? '#FF6B4A' : '#FFF8F0';
+---
+
+<span class:list={['logo', { 'logo-escuro': escuro }, classe]}>
+  <svg class="logo-icone" viewBox="0 0 48 56" aria-hidden="true" focusable="false">
+    <path d="M8 2 H30 L44 16 V48 Q44 54 38 54 H8 Q2 54 2 48 V8 Q2 2 8 2 Z" fill={folha}></path>
+    <path d="M30 2 V11 Q30 16 35 16 H44 Z" fill={dobra}></path>
+    <polyline
+      points="13,34 20,41 34,27"
+      fill="none"
+      stroke={check}
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"></polyline>
+  </svg>
+  {
+    soIcone ? (
+      <span class="sr-only">NotaSimples</span>
+    ) : (
+      <span class="logo-nome">
+        <span class="nota">nota</span><span class="simples">simples</span>
+      </span>
+    )
+  }
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .logo-icone {
+    width: auto;
+    height: 1.25em;
+  }
+
+  .nota {
+    color: var(--grafite);
+  }
+
+  .simples {
+    color: var(--coral-queimado);
+  }
+
+  .logo-escuro .nota {
+    color: var(--creme);
+  }
+
+  .logo-escuro .simples {
+    color: var(--coral);
+  }
+</style>

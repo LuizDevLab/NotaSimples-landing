@@ -1,0 +1,103 @@
+---
+import Icone from './Icone.astro';
+import { conteudo } from '../lib/conteudo';
+
+const { faq } = conteudo;
+---
+
+<section class="secao" aria-labelledby="faq-titulo">
+  <div class="container">
+    <div class="secao-cabecalho centro">
+      <h2 id="faq-titulo">{faq.titulo}</h2>
+    </div>
+
+    <div class="faq-lista">
+      {
+        faq.perguntas.map((p) => (
+          <details class="faq-item">
+            <summary>
+              <h3>{p.pergunta}</h3>
+              <span class="faq-icone">
+                <Icone nome="mais" tamanho={20} />
+              </span>
+            </summary>
+            <p>{p.resposta}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-lista {
+    display: grid;
+    gap: var(--esp-3);
+    max-width: 48rem;
+    margin-inline: auto;
+  }
+
+  .faq-item {
+    background: var(--branco);
+    border: 1px solid var(--bege);
+    border-radius: 20px;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--esp-4);
+    padding: var(--esp-4) var(--esp-6);
+    border-radius: 20px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary h3 {
+    font-family: var(--fonte-texto);
+    font-size: var(--texto-base);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.4;
+  }
+
+  .faq-icone {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--pessego);
+    color: var(--coral-queimado);
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-icone {
+    transform: rotate(45deg);
+  }
+
+  .faq-item p {
+    padding: 0 var(--esp-6) var(--esp-6);
+    color: var(--marrom);
+  }
+
+  @media (min-width: 48rem) {
+    summary {
+      padding: var(--esp-6) var(--esp-8);
+    }
+
+    summary h3 {
+      font-size: 1.0625rem;
+    }
+
+    .faq-item p {
+      padding: 0 var(--esp-8) var(--esp-6);
+    }
+  }
+</style>

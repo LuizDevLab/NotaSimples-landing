@@ -1,0 +1,42 @@
+---
+import Logo from './Logo.astro';
+import BotaoCta from './BotaoCta.astro';
+import { conteudo } from '../lib/conteudo';
+---
+
+<header class="cabecalho">
+  <div class="container cabecalho-interno">
+    <a href="/" class="cabecalho-logo" aria-label="NotaSimples, página inicial">
+      <Logo />
+    </a>
+    <BotaoCta texto={conteudo.cta.botao_curto} pequeno />
+  </div>
+</header>
+
+<style>
+  .cabecalho-interno {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--esp-4);
+    padding-block: var(--esp-4);
+  }
+
+  .cabecalho-logo {
+    text-decoration: none;
+  }
+
+  .cabecalho-logo :global(.logo) {
+    font-size: 1.375rem;
+  }
+
+  @media (min-width: 48rem) {
+    .cabecalho-interno {
+      padding-block: var(--esp-6);
+    }
+
+    .cabecalho-logo :global(.logo) {
+      font-size: 1.625rem;
+    }
+  }
+</style>

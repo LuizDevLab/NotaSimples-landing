@@ -1,0 +1,121 @@
+---
+import Icone from './Icone.astro';
+import { conteudo } from '../lib/conteudo';
+
+const { dor } = conteudo;
+---
+
+<section class="secao faixa" aria-labelledby="dor-titulo">
+  <div class="container">
+    <div class="secao-cabecalho centro">
+      <h2 id="dor-titulo">{dor.titulo}</h2>
+      <p>{dor.subtitulo}</p>
+    </div>
+
+    <div class="dor-grade">
+      <div class="dor-card dor-portal">
+        <h3>{dor.portal.rotulo}</h3>
+        <ul>
+          {
+            dor.portal.itens.map((item) => (
+              <li>
+                <span class="marcador"><Icone nome="x" tamanho={16} /></span>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="dor-card dor-notasimples">
+        <h3>{dor.notasimples.rotulo}</h3>
+        <ul>
+          {
+            dor.notasimples.itens.map((item) => (
+              <li>
+                <span class="marcador"><Icone nome="check" tamanho={16} /></span>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dor-grade {
+    display: grid;
+    gap: var(--esp-6);
+    max-width: 60rem;
+    margin-inline: auto;
+  }
+
+  .dor-card {
+    display: grid;
+    gap: var(--esp-6);
+    align-content: start;
+    padding: var(--esp-8) var(--esp-6);
+    border-radius: var(--raio-card);
+  }
+
+  .dor-portal {
+    background: var(--creme);
+    border: 1.5px dashed var(--bege);
+    color: var(--marrom);
+  }
+
+  .dor-portal h3 {
+    color: var(--grafite);
+  }
+
+  .dor-notasimples {
+    background: var(--branco);
+    border: 2px solid var(--coral);
+    box-shadow: var(--sombra-md);
+  }
+
+  ul {
+    display: grid;
+    gap: var(--esp-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    gap: var(--esp-3);
+    align-items: flex-start;
+  }
+
+  .marcador {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-top: -0.0625rem;
+    border-radius: 50%;
+  }
+
+  .dor-portal .marcador {
+    background: var(--creme-areia);
+    color: var(--marrom);
+  }
+
+  .dor-notasimples .marcador {
+    background: var(--coral);
+    color: var(--grafite);
+  }
+
+  @media (min-width: 48rem) {
+    .dor-grade {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .dor-card {
+      padding: var(--esp-8);
+    }
+  }
+</style>

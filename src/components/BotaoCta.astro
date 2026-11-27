@@ -1,0 +1,26 @@
+---
+// Botão da chamada principal. Todos levam ao formulário da lista (#lista).
+import Icone from './Icone.astro';
+import { conteudo } from '../lib/conteudo';
+
+interface Props {
+  texto?: string;
+  pequeno?: boolean;
+  largo?: boolean;
+}
+
+const { texto = conteudo.cta.botao, pequeno = false, largo = false } = Astro.props;
+---
+
+<a class:list={['botao', { 'botao-pequeno': pequeno, 'botao-largo': largo }]} href="#lista">
+  {texto}
+  {!pequeno && <Icone nome="seta" tamanho={20} />}
+</a>
+
+<style>
+  .botao-pequeno {
+    min-height: 2.75rem;
+    padding: var(--esp-2) var(--esp-4);
+    font-size: var(--texto-sm);
+  }
+</style>

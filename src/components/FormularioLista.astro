@@ -1,0 +1,181 @@
+---
+// Formulário da lista de espera: só HTML e CSS por enquanto.
+// O envio (JS, Pages Function, Turnstile e Sheets) entra na etapa 4. Os erros e o card de
+// sucesso já estão aqui, escondidos, para a etapa 4 só ligar e desligar.
+import Icone from './Icone.astro';
+import { conteudo, comLinks } from '../lib/conteudo';
+
+const f = conteudo.formulario;
+---
+
+<div class="form-card">
+  <form class="formulario" action="/api/lista" method="post" data-formulario>
+    <div class="form-cabecalho">
+      <h3>{f.titulo}</h3>
+      <p>{f.texto}</p>
+    </div>
+
+    <div class="campo">
+      <label for="lista-nome">{f.campos.nome.rotulo}</label>
+      <input
+        id="lista-nome"
+        name="nome"
+        type="text"
+        autocomplete="name"
+        required
+        placeholder={f.campos.nome.placeholder}
+        aria-describedby="erro-nome"
+      />
+      <p class="erro" id="erro-nome" hidden>{f.erros.nome}</p>
+    </div>
+
+    <div class="campo">
+      <label for="lista-email">{f.campos.email.rotulo}</label>
+      <input
+        id="lista-email"
+        name="email"
+        type="email"
+        inputmode="email"
+        autocomplete="email"
+        required
+        placeholder={f.campos.email.placeholder}
+        aria-describedby="erro-email"
+      />
+      <p class="erro" id="erro-email" hidden>{f.erros.email}</p>
+    </div>
+
+    <div class="campo">
+      <label for="lista-whatsapp">
+        {f.campos.whatsapp.rotulo}{' '}
+        <span class="opcional">{f.campos.whatsapp.opcional}</span>
+      </label>
+      <input
+        id="lista-whatsapp"
+        name="whatsapp"
+        type="tel"
+        inputmode="tel"
+        autocomplete="tel-national"
+        placeholder={f.campos.whatsapp.placeholder}
+        aria-describedby="erro-whatsapp"
+      />
+      <p class="erro" id="erro-whatsapp" hidden>{f.erros.whatsapp}</p>
+    </div>
+
+    <div class="consentimento">
+      <input
+        id="lista-consentimento"
+        name="consentimento"
+        type="checkbox"
+        required
+        aria-describedby="erro-consentimento"
+      />
+      <label for="lista-consentimento" set:html={comLinks(f.campos.consentimento)} />
+      <p class="erro" id="erro-consentimento" hidden>{f.erros.consentimento}</p>
+    </div>
+
+    <button type="submit" class="botao botao-largo">{f.botao}</button>
+    <p class="erro erro-geral" role="alert" hidden>{f.erros.geral}</p>
+  </form>
+
+  <div class="sucesso" role="status" tabindex="-1" hidden data-sucesso>
+    <span class="sucesso-icone"><Icone nome="check" tamanho={32} /></span>
+    <h3>{f.sucesso.titulo}</h3>
+    <p>{f.sucesso.texto}</p>
+  </div>
+</div>
+
+<style>
+  .form-card {
+    padding: var(--esp-8) var(--esp-6);
+    background: var(--branco);
+    color: var(--grafite);
+    border-radius: var(--raio-card-grande);
+    box-shadow: var(--sombra-lg);
+  }
+
+  .formulario {
+    display: grid;
+    gap: var(--esp-6);
+  }
+
+  .form-cabecalho {
+    display: grid;
+    gap: var(--esp-1);
+  }
+
+  .form-cabecalho p {
+    color: var(--marrom);
+  }
+
+  .opcional {
+    font-weight: 400;
+    color: var(--marrom);
+  }
+
+  .campo input::placeholder {
+    color: #7a6a60; /* 5:1 no branco */
+  }
+
+  .consentimento {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--esp-1) var(--esp-3);
+    align-items: start;
+    font-size: var(--texto-sm);
+  }
+
+  .consentimento input {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.125rem;
+    accent-color: var(--coral-queimado);
+    cursor: pointer;
+  }
+
+  .consentimento .erro {
+    grid-column: 2;
+  }
+
+  .erro {
+    font-size: var(--texto-sm);
+    font-weight: 600;
+    color: #b42318;
+  }
+
+  .sucesso {
+    display: grid;
+    justify-items: center;
+    gap: var(--esp-3);
+    padding-block: var(--esp-8);
+    text-align: center;
+  }
+
+  .sucesso[hidden] {
+    display: none;
+  }
+
+  .sucesso:focus {
+    outline: none;
+  }
+
+  .sucesso-icone {
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: var(--esp-2);
+    border-radius: 50%;
+    background: var(--verde-fundo);
+    color: var(--verde);
+  }
+
+  .sucesso p {
+    color: var(--marrom);
+  }
+
+  @media (min-width: 48rem) {
+    .form-card {
+      padding: var(--esp-12);
+    }
+  }
+</style>

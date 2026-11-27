@@ -1,0 +1,73 @@
+---
+// Seção final, em fundo grafite. É o destino (#lista) de todos os botões do CTA.
+import Icone from './Icone.astro';
+import FormularioLista from './FormularioLista.astro';
+import { conteudo } from '../lib/conteudo';
+
+const { cta_final, cta } = conteudo;
+---
+
+<section id="lista" class="secao cta-final" aria-labelledby="cta-final-titulo">
+  <div class="container cta-grade">
+    <div class="cta-texto">
+      <h2 id="cta-final-titulo">{cta_final.titulo}</h2>
+      <p>{cta_final.texto}</p>
+      <p class="cta-vantagem">
+        <span class="marcador"><Icone nome="check" tamanho={16} /></span>
+        {cta.vantagem}
+      </p>
+    </div>
+    <FormularioLista />
+  </div>
+</section>
+
+<style>
+  .cta-final {
+    background: var(--grafite);
+    color: var(--creme);
+    scroll-margin-top: var(--esp-4);
+  }
+
+  .cta-grade {
+    display: grid;
+    gap: var(--esp-12);
+  }
+
+  .cta-texto {
+    display: grid;
+    gap: var(--esp-6);
+    align-content: center;
+  }
+
+  .cta-texto > p {
+    font-size: var(--texto-lg);
+    color: var(--bege);
+  }
+
+  .cta-texto > p.cta-vantagem {
+    display: flex;
+    gap: var(--esp-3);
+    align-items: flex-start;
+    font-size: var(--texto-base);
+    color: var(--creme);
+  }
+
+  .marcador {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.0625rem;
+    border-radius: 50%;
+    background: var(--coral);
+    color: var(--grafite);
+  }
+
+  @media (min-width: 64rem) {
+    .cta-grade {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--esp-16);
+    }
+  }
+</style>

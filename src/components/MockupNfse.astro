@@ -1,0 +1,167 @@
+---
+// Ilustração da tela "Nova NFS-e" em HTML/CSS. Para leitores de tela, é uma imagem com descrição.
+import Icone from './Icone.astro';
+import { conteudo } from '../lib/conteudo';
+
+const m = conteudo.hero.mockup;
+const descricao = `Exemplo da tela ${m.titulo_tela} do NotaSimples: ${m.campos
+  .map((c) => `${c.pergunta} ${c.valor}`)
+  .join('. ')}. Dica: ${m.dica} Resultado: ${m.sucesso}.`;
+---
+
+<div class="mockup" role="img" aria-label={descricao}>
+  <div class="mockup-barra">
+    <span class="mockup-pontos"><i></i><i></i><i></i></span>
+    <span class="mockup-titulo">{m.titulo_tela}</span>
+  </div>
+
+  <div class="mockup-corpo">
+    {
+      m.campos.map((campo, i) => (
+        <div class:list={['m-campo', { 'm-campo-ativo': i === 1 }]}>
+          <span class="m-rotulo">{campo.pergunta}</span>
+          <span class="m-valor">
+            {campo.valor}
+            {campo.detalhe && <small>{campo.detalhe}</small>}
+          </span>
+        </div>
+      ))
+    }
+
+    <div class="m-dica">
+      <Icone nome="guia" tamanho={20} />
+      <span>{m.dica}</span>
+    </div>
+
+    <div class="m-acoes">
+      <span class="m-botao">{m.botao}</span>
+      <span class="selo selo-verde m-sucesso">
+        <Icone nome="check" tamanho={16} />
+        {m.sucesso}
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mockup {
+    width: 100%;
+    max-width: 30rem;
+    margin-inline: auto;
+    background: var(--branco);
+    border: 1px solid var(--bege);
+    border-radius: var(--raio-card-grande);
+    box-shadow: var(--sombra-lg);
+    overflow: hidden;
+  }
+
+  .mockup-barra {
+    display: flex;
+    align-items: center;
+    gap: var(--esp-3);
+    padding: var(--esp-3) var(--esp-6);
+    background: var(--creme-areia);
+    border-bottom: 1px solid var(--bege);
+  }
+
+  .mockup-pontos {
+    display: inline-flex;
+    gap: 6px;
+  }
+
+  .mockup-pontos i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bege);
+  }
+
+  .mockup-pontos i:first-child {
+    background: var(--coral);
+  }
+
+  .mockup-titulo {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .mockup-corpo {
+    display: grid;
+    gap: var(--esp-3);
+    padding: var(--esp-6);
+  }
+
+  .m-campo {
+    display: grid;
+    gap: var(--esp-1);
+  }
+
+  .m-rotulo {
+    font-size: var(--texto-sm);
+    font-weight: 600;
+  }
+
+  .m-valor {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    column-gap: var(--esp-3);
+    padding: var(--esp-2) var(--esp-3);
+    border: 1.5px solid var(--bege);
+    border-radius: var(--raio-campo);
+    font-size: var(--texto-sm);
+  }
+
+  .m-valor small {
+    color: var(--marrom);
+    font-size: 0.8125rem;
+  }
+
+  .m-campo-ativo .m-valor {
+    border-color: var(--coral);
+    box-shadow: 0 0 0 3px rgb(255 107 74 / 0.2);
+  }
+
+  .m-dica {
+    display: flex;
+    gap: var(--esp-2);
+    align-items: flex-start;
+    padding: var(--esp-3);
+    background: var(--pessego);
+    border-radius: var(--raio-campo);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .m-dica :global(svg) {
+    flex: none;
+    color: var(--coral-queimado);
+  }
+
+  .m-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--esp-3);
+    margin-top: var(--esp-1);
+  }
+
+  .m-botao {
+    padding: var(--esp-2) var(--esp-4);
+    border-radius: var(--raio-campo);
+    background: var(--coral-queimado);
+    color: var(--branco);
+    font-size: var(--texto-sm);
+    font-weight: 700;
+  }
+
+  @media (min-width: 48rem) {
+    .mockup-corpo {
+      gap: var(--esp-4);
+      padding: var(--esp-8);
+    }
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+// Só aparece com `prova_social.ativo: true` e pelo menos um depoimento real no landing.yaml.
+import { conteudo } from '../lib/conteudo';
+
+const { prova_social } = conteudo;
+const mostrar = prova_social.ativo && prova_social.depoimentos?.length > 0;
+---
+
+{
+  mostrar && (
+    <section class="secao" aria-labelledby="prova-titulo">
+      <div class="container">
+        <div class="secao-cabecalho centro">
+          <h2 id="prova-titulo">{prova_social.titulo}</h2>
+        </div>
+        <ul class="prova-grade">
+          {prova_social.depoimentos.map((d) => (
+            <li>
+              <figure class="prova-card">
+                <blockquote>
+                  <p>“{d.texto}”</p>
+                </blockquote>
+                <figcaption>
+                  <strong>{d.nome}</strong>
+                  {d.negocio && <span>{d.negocio}</span>}
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .prova-grade {
+    display: grid;
+    gap: var(--esp-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  .prova-card {
+    display: grid;
+    gap: var(--esp-4);
+    height: 100%;
+    padding: var(--esp-8) var(--esp-6);
+    background: var(--branco);
+    border-radius: var(--raio-card);
+    box-shadow: var(--sombra-sm);
+  }
+
+  blockquote p {
+    font-size: var(--texto-lg);
+  }
+
+  figcaption {
+    display: grid;
+    font-size: var(--texto-sm);
+  }
+
+  figcaption span {
+    color: var(--marrom);
+  }
+
+  @media (min-width: 48rem) {
+    .prova-grade {
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    }
+  }
+</style>

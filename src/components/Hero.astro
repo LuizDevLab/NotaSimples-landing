@@ -1,0 +1,95 @@
+---
+import BotaoCta from './BotaoCta.astro';
+import MockupNfse from './MockupNfse.astro';
+import { conteudo } from '../lib/conteudo';
+
+const { hero, cta } = conteudo;
+
+// Destaca "1 minuto" no título, se a expressão estiver lá.
+const destaque = '1 minuto';
+const [antes, depois] = hero.titulo.includes(destaque)
+  ? hero.titulo.split(destaque)
+  : [hero.titulo, undefined];
+---
+
+<section class="hero">
+  <div class="container hero-grade">
+    <div class="hero-texto">
+      <span class="selo selo-pessego">{hero.selo}</span>
+      <h1>
+        {antes}{depois !== undefined && <span class="destaque">{destaque}</span>}{depois}
+      </h1>
+      <p class="hero-subtitulo">{hero.subtitulo}</p>
+      <div class="hero-cta">
+        <BotaoCta />
+        <p>{cta.vantagem}</p>
+        <p class="hero-apoio">{hero.apoio}</p>
+      </div>
+    </div>
+
+    <div class="hero-mockup">
+      <MockupNfse />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--esp-8) var(--esp-secao);
+  }
+
+  .hero-grade {
+    display: grid;
+    gap: var(--esp-12);
+  }
+
+  .hero-texto {
+    display: grid;
+    gap: var(--esp-6);
+    justify-items: start;
+  }
+
+  .destaque {
+    color: var(--coral-queimado);
+  }
+
+  .hero-subtitulo {
+    max-width: 36rem;
+    font-size: var(--texto-lg);
+    color: var(--marrom);
+  }
+
+  .hero-cta {
+    display: grid;
+    gap: var(--esp-3);
+    justify-items: start;
+    max-width: 30rem;
+    font-size: var(--texto-sm);
+  }
+
+  .hero-cta :global(.botao) {
+    width: 100%;
+  }
+
+  .hero-apoio {
+    color: var(--marrom);
+  }
+
+  @media (min-width: 30rem) {
+    .hero-cta :global(.botao) {
+      width: auto;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hero {
+      padding-top: var(--esp-12);
+    }
+
+    .hero-grade {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: var(--esp-16);
+    }
+  }
+</style>

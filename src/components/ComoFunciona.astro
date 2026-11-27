@@ -1,0 +1,72 @@
+---
+import { conteudo } from '../lib/conteudo';
+
+const { como_funciona } = conteudo;
+---
+
+<section class="secao" aria-labelledby="como-titulo">
+  <div class="container">
+    <div class="secao-cabecalho centro">
+      <h2 id="como-titulo">{como_funciona.titulo}</h2>
+    </div>
+
+    <ol class="passos">
+      {
+        como_funciona.passos.map((passo, i) => (
+          <li class="passo">
+            <span class="passo-numero" aria-hidden="true">{i + 1}</span>
+            <h3>
+              <span class="sr-only">Passo {i + 1}: </span>
+              {passo.titulo}
+            </h3>
+            <p>{passo.texto}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .passos {
+    display: grid;
+    gap: var(--esp-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  .passo {
+    display: grid;
+    gap: var(--esp-3);
+    align-content: start;
+    padding: var(--esp-8) var(--esp-6);
+    background: var(--branco);
+    border-radius: var(--raio-card);
+    box-shadow: var(--sombra-sm);
+  }
+
+  .passo-numero {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: var(--esp-2);
+    border-radius: 50%;
+    background: var(--coral);
+    color: var(--grafite);
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .passo p {
+    color: var(--marrom);
+  }
+
+  @media (min-width: 48rem) {
+    .passos {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

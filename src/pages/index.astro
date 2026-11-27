@@ -1,68 +1,31 @@
 ---
-// PÁGINA PROVISÓRIA de conferência dos tokens. Será substituída pela landing na etapa 3.
 import Base from '../layouts/Base.astro';
-
-const cores = [
-  ['--coral', '#FF6B4A', 'Ícone, destaques, foco'],
-  ['--coral-queimado', '#C2410C', 'Botões e links'],
-  ['--coral-escuro', '#9A3412', 'Hover'],
-  ['--creme', '#FFF8F0', 'Fundo'],
-  ['--creme-areia', '#F8EAD8', 'Cards e faixas'],
-  ['--bege', '#EADBCB', 'Bordas sutis'],
-  ['--grafite', '#2B211C', 'Texto'],
-  ['--marrom', '#6B5A50', 'Texto secundário'],
-  ['--verde', '#15803D', 'Nota emitida'],
-  ['--verde-fundo', '#DCFCE7', 'Fundo do selo'],
-  ['--pessego', '#FFF1E8', 'Fundo de dica'],
-];
+import Cabecalho from '../components/Cabecalho.astro';
+import Hero from '../components/Hero.astro';
+import Dor from '../components/Dor.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Funcionalidades from '../components/Funcionalidades.astro';
+import Suporte from '../components/Suporte.astro';
+import ProvaSocial from '../components/ProvaSocial.astro';
+import Planos from '../components/Planos.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import Rodape from '../components/Rodape.astro';
+import { conteudo } from '../lib/conteudo';
 ---
 
-<Base title="Tokens — NotaSimples" description="Página provisória de conferência dos tokens." noindex>
-  <main class="container" style="padding-block: var(--esp-12); display: grid; gap: var(--esp-12);">
-    <header style="display: grid; gap: var(--esp-4);">
-      <p class="texto-secundario">Página provisória · etapa 1</p>
-      <h1>Sua NFS-e emitida em 1 minuto</h1>
-      <h2>Sem precisar entender o Portal Nacional</h2>
-      <h3>Qual serviço você prestou?</h3>
-      <p style="max-width: var(--largura-texto); font-size: var(--texto-lg);">
-        Texto corrido em Plus Jakarta Sans. Direto, caloroso e sem contabilês. <a href="#cores">Um link de exemplo</a>.
-      </p>
-      <p class="texto-secundario">Texto secundário em marrom acinzentado.</p>
-    </header>
-
-    <section id="cores" style="display: grid; gap: var(--esp-4);">
-      <h2>Cores</h2>
-      <ul style="list-style: none; padding: 0; display: grid; gap: var(--esp-4); grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));">
-        {cores.map(([nome, hex, papel]) => (
-          <li class="card" style="overflow: hidden;">
-            <div style={`height: 5rem; background: var(${nome}); border-bottom: 1px solid var(--bege);`}></div>
-            <div style="padding: var(--esp-3) var(--esp-4);">
-              <strong>{hex}</strong>
-              <p class="texto-secundario" style="font-size: var(--texto-sm);">{nome}<br />{papel}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    <section style="display: grid; gap: var(--esp-6);">
-      <h2>Componentes base</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: var(--esp-4); align-items: center;">
-        <a class="botao" href="#lista">Entrar na lista de espera</a>
-        <span style="background: var(--verde-fundo); color: var(--verde); font-weight: 700; padding: var(--esp-1) var(--esp-3); border-radius: 999px;">Nota emitida</span>
-      </div>
-      <div class="card" style="padding: var(--esp-8); display: grid; gap: var(--esp-4); max-width: 28rem;">
-        <div class="campo">
-          <label for="nome">Como podemos te chamar?</label>
-          <input id="nome" type="text" placeholder="Seu nome" />
-        </div>
-        <p style="background: var(--pessego); padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-campo); font-size: var(--texto-sm);">
-          Dica: é assim que aparece a ajuda campo a campo.
-        </p>
-      </div>
-      <div class="faixa" style="border-radius: var(--raio-card-grande); padding: var(--esp-8);">
-        Faixa de seção em creme areia, com <a href="#cores">link em coral escuro</a>.
-      </div>
-    </section>
+<Base title={conteudo.seo.titulo} description={conteudo.seo.descricao}>
+  <Cabecalho />
+  <main>
+    <Hero />
+    <Dor />
+    <ComoFunciona />
+    <Funcionalidades />
+    <Suporte />
+    <ProvaSocial />
+    <Planos />
+    <Faq />
+    <CtaFinal />
   </main>
+  <Rodape />
 </Base>

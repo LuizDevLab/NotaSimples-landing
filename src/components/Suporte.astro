@@ -1,0 +1,102 @@
+---
+import Icone from './Icone.astro';
+import { conteudo } from '../lib/conteudo';
+import { linkWhatsApp } from '../lib/contato';
+
+const { suporte } = conteudo;
+---
+
+<section class="secao" aria-labelledby="suporte-titulo">
+  <div class="container">
+    <div class="suporte-card">
+      <span class="suporte-icone"><Icone nome="conversa" tamanho={32} /></span>
+      <div class="suporte-texto">
+        <h2 id="suporte-titulo">{suporte.titulo}</h2>
+        <p>{suporte.texto}</p>
+        <p class="suporte-horario">
+          <Icone nome="relogio" tamanho={20} />
+          {suporte.horario}
+        </p>
+      </div>
+      <a class="botao" href={linkWhatsApp()} target="_blank" rel="noopener">
+        <Icone nome="conversa" tamanho={20} />
+        {suporte.botao}
+        <span class="sr-only">(abre o WhatsApp em nova aba)</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .suporte-card {
+    display: grid;
+    gap: var(--esp-6);
+    justify-items: start;
+    padding: var(--esp-8) var(--esp-6);
+    background: var(--branco);
+    border: 1px solid var(--bege);
+    border-radius: var(--raio-card-grande);
+    box-shadow: var(--sombra-md);
+  }
+
+  .suporte-icone {
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: var(--coral);
+    color: var(--grafite);
+  }
+
+  .suporte-texto {
+    display: grid;
+    gap: var(--esp-3);
+    max-width: var(--largura-texto);
+  }
+
+  .suporte-texto p {
+    font-size: var(--texto-lg);
+    color: var(--marrom);
+  }
+
+  .suporte-horario {
+    display: flex;
+    align-items: center;
+    gap: var(--esp-2);
+    font-weight: 600;
+  }
+
+  .suporte-horario :global(svg) {
+    flex: none;
+    color: var(--coral-queimado);
+  }
+
+  .suporte-card > .botao {
+    width: 100%;
+  }
+
+  @media (min-width: 48rem) {
+    .suporte-card {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      column-gap: var(--esp-8);
+      padding: var(--esp-12);
+    }
+
+    .suporte-card > .botao {
+      grid-column: 2;
+      width: auto;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .suporte-card {
+      grid-template-columns: auto 1fr auto;
+    }
+
+    .suporte-card > .botao {
+      grid-column: 3;
+    }
+  }
+</style>

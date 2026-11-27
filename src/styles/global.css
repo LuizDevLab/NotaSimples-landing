@@ -182,6 +182,76 @@ a:hover {
   box-shadow: var(--sombra-md);
 }
 
+/* Seções da landing */
+.secao {
+  padding-block: var(--esp-secao);
+}
+
+.secao-cabecalho {
+  display: grid;
+  gap: var(--esp-4);
+  max-width: var(--largura-texto);
+  margin-bottom: var(--esp-12);
+}
+
+.secao-cabecalho.centro {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+.secao-cabecalho p {
+  font-size: var(--texto-lg);
+  color: var(--marrom);
+}
+
+.secao-cta {
+  display: grid;
+  justify-items: center;
+  gap: var(--esp-3);
+  margin-top: var(--esp-12);
+  text-align: center;
+}
+
+.secao-cta p {
+  max-width: 30rem;
+  font-size: var(--texto-sm);
+  color: var(--marrom);
+}
+
+/* Selos (pílulas) */
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-1);
+  padding: var(--esp-1) var(--esp-3);
+  border-radius: 999px;
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.selo-pessego {
+  background: var(--pessego);
+  color: var(--coral-escuro);
+  border: 1px solid rgb(255 107 74 / 0.35);
+}
+
+.selo-verde {
+  background: var(--verde-fundo);
+  color: var(--verde);
+}
+
+.selo-neutro {
+  background: var(--creme-areia);
+  color: var(--marrom);
+}
+
+.botao-largo {
+  width: 100%;
+}
+
 /* Faixa de seção em creme areia. Coral queimado sobre creme areia dá 4.38:1 (< 4.5),
    então links de texto aqui usam o coral escuro. */
 .faixa {

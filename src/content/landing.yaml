@@ -8,6 +8,7 @@ seo:
 
 cta:
   botao: "Entrar na lista de espera"
+  botao_curto: "Entrar na lista" # botão do cabeçalho, que tem pouco espaço no celular
   vantagem: "Quem entra na lista testa primeiro e garante uma condição especial de lançamento."
 
 hero:

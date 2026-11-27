@@ -1,0 +1,92 @@
+---
+import Icone from './Icone.astro';
+import BotaoCta from './BotaoCta.astro';
+import { conteudo } from '../lib/conteudo';
+
+const { planos, cta } = conteudo;
+---
+
+<section class="secao faixa" aria-labelledby="planos-titulo">
+  <div class="container">
+    <div class="secao-cabecalho centro">
+      <h2 id="planos-titulo">{planos.titulo}</h2>
+    </div>
+
+    <div class="plano-card">
+      <span class="selo selo-pessego">{planos.aviso}</span>
+      <p class="plano-texto">{planos.texto}</p>
+
+      <h3>{planos.incluido_titulo}</h3>
+      <ul>
+        {
+          planos.incluido.map((item) => (
+            <li>
+              <span class="marcador"><Icone nome="check" tamanho={16} /></span>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+
+      <BotaoCta largo />
+      <p class="plano-vantagem">{cta.vantagem}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .plano-card {
+    display: grid;
+    gap: var(--esp-6);
+    justify-items: start;
+    max-width: 36rem;
+    margin-inline: auto;
+    padding: var(--esp-8) var(--esp-6);
+    background: var(--branco);
+    border-radius: var(--raio-card-grande);
+    box-shadow: var(--sombra-lg);
+  }
+
+  .plano-texto {
+    font-size: var(--texto-lg);
+    color: var(--marrom);
+  }
+
+  ul {
+    display: grid;
+    gap: var(--esp-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    gap: var(--esp-3);
+    align-items: flex-start;
+  }
+
+  .marcador {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.0625rem;
+    border-radius: 50%;
+    background: var(--coral);
+    color: var(--grafite);
+  }
+
+  .plano-vantagem {
+    justify-self: center;
+    font-size: var(--texto-sm);
+    color: var(--marrom);
+    text-align: center;
+  }
+
+  @media (min-width: 48rem) {
+    .plano-card {
+      padding: var(--esp-12);
+    }
+  }
+</style>

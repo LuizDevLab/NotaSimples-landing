@@ -1,0 +1,99 @@
+---
+import Icone, { type NomeIcone } from './Icone.astro';
+import BotaoCta from './BotaoCta.astro';
+import { conteudo } from '../lib/conteudo';
+
+const { funcionalidades, cta } = conteudo;
+
+// Ícone de cada item, na mesma ordem do landing.yaml.
+const icones: NomeIcone[] = ['guia', 'modelos', 'envio', 'grafico', 'relatorio', 'brilho'];
+---
+
+<section class="secao faixa" aria-labelledby="func-titulo">
+  <div class="container">
+    <div class="secao-cabecalho centro">
+      <h2 id="func-titulo">{funcionalidades.titulo}</h2>
+    </div>
+
+    <ul class="func-grade">
+      {
+        funcionalidades.itens.map((item, i) => (
+          <li class="func-card">
+            <span class="func-icone">
+              <Icone nome={icones[i] ?? 'check'} />
+            </span>
+            <h3>
+              {item.titulo}
+              {item.em_breve && <span class="selo selo-neutro">em breve</span>}
+            </h3>
+            <p>{item.texto}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="secao-cta">
+      <BotaoCta />
+      <p>{cta.vantagem}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .func-grade {
+    display: grid;
+    gap: var(--esp-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .func-card {
+    display: grid;
+    gap: var(--esp-3);
+    align-content: start;
+    padding: var(--esp-6);
+    background: var(--branco);
+    border-radius: var(--raio-card);
+    box-shadow: var(--sombra-sm);
+  }
+
+  .func-icone {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: var(--esp-1);
+    border-radius: 14px;
+    background: var(--pessego);
+    color: var(--coral-queimado);
+  }
+
+  h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--esp-2);
+  }
+
+  h3 .selo {
+    font-family: var(--fonte-texto);
+    letter-spacing: 0;
+  }
+
+  .func-card p {
+    color: var(--marrom);
+  }
+
+  @media (min-width: 48rem) {
+    .func-grade {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--esp-6);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .func-grade {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
